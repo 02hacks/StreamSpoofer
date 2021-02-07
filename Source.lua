@@ -68,11 +68,11 @@ function StreamSpoofer.Func() -- StreamSpoofer v2.00 Created: 8.10.20
 		for i,v in next, LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Frame_MessageLogDisplay.Scroller:GetChildren() do 
 			StreamSpoofer.Chat(v,SpoofString)
 		end
-		warn("Started StreamSpoofer",1)
+		warn("Started StreamSpoofer")
 		repeat wait()
 			--
 		until StreamSpoofer.Active == false
-		warn("Stopped StreamSpoofer",1)
+		warn("Stopped StreamSpoofer")
 	end
 end
 
@@ -94,7 +94,9 @@ game.CoreGui.RobloxGui.ChildAdded:connect(function(Added)
 end)
 
 LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Frame_MessageLogDisplay.Scroller.ChildAdded:connect(function(v)
-	StreamSpoofer.Chat(v,SpoofString)
+	if StreamSpoofer.Active then
+		StreamSpoofer.Chat(v,SpoofString)
+	end
 end)
 
 StreamSpoofer.Active = true
