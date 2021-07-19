@@ -41,7 +41,7 @@ function StreamSpoofer.Chat(Args,Spoof)
 end
 
 function StreamSpoofer.PLRLM(Spoof)
-	local Scoll = game.CoreGui.RobloxGui.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame
+	local Scoll = game.CoreGui.PlayerList.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame
 	if Scoll.OffsetUndoFrame:FindFirstChild("p_"..LP.UserId) then
 		Scoll.OffsetUndoFrame["p_"..LP.UserId].ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerName.PlayerName.Text = Spoof
 	end
@@ -60,10 +60,10 @@ function StreamSpoofer.Func() -- StreamSpoofer v2.00 Created: 8.10.20
 				game.Workspace[v.Name].Humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
 			end
 		end
-		if game.CoreGui.RobloxGui:FindFirstChild("PlayerListMaster") then
-			game.CoreGui.RobloxGui.PlayerListMaster.Visible = false
+		if game.CoreGui.PlayerList:FindFirstChild("PlayerListMaster") then
+			game.CoreGui.PlayerList.PlayerListMaster.Visible = false
 			StreamSpoofer.PLRLM(SpoofString)
-			game.CoreGui.RobloxGui.PlayerListMaster.Visible = true
+			game.CoreGui.PlayerList.PlayerListMaster.Visible = true
 		end
 		for i,v in next, LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Frame_MessageLogDisplay.Scroller:GetChildren() do 
 			StreamSpoofer.Chat(v,SpoofString)
@@ -86,7 +86,7 @@ game.Workspace.ChildAdded:connect(function(v)
 	end
 end)
 
-game.CoreGui.RobloxGui.ChildAdded:connect(function(Added)
+game.CoreGui.PlayerList.ChildAdded:connect(function(Added)
 	if StreamSpoofer.Active	and tostring(Added) == "PlayerListMaster" then
 		wait(0.15)
 		StreamSpoofer.PLRLM(SpoofString)
